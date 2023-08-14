@@ -1,0 +1,49 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<style>
+    .home-container {
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+
+    .topics-container {
+        padding: 20px;
+    }
+
+    .rooms-container {
+        padding: 20px;
+    }
+
+    .recent-activity-container {
+        padding: 20px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .home-container {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="home-container">
+    <div class="topics-container">
+      {% include 'base/topic.html' %}
+    </div>
+
+    <div class="rooms-container">
+        <div>
+            <h5>{{room_count}} rooms available</h5>
+            <a href="{% url 'create-room' %}">Create Room</a>
+        </div>
+        {% include 'base/feed_component.html' %}
+    </div>
+
+    <div class="recent-activity-container">
+      {% include 'base/activity.html' %}
+    </div>
+</div>
+{% endblock content %}
+
+
