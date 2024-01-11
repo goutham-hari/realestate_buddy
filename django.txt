@@ -1,0 +1,103 @@
+djanjo follows MVT model view template architecture
+
+template = text file
+Django
+step 1: Create virtual enviornment
+        a)python -m venv myenv(anyname)
+        b)cd myenv
+        c)cd Scripts
+        d)for activation
+             ./activate
+        e)back to main folder
+          cd ../..
+
+step 2: django install
+         python -m pip install django
+
+step 3: Project Creation
+       a)django-admin startproject firstproject(Project name)
+       b)cd firstproject
+       c)python manage.py runserver(for running the project)
+
+step 4: Create application
+        a)django-admin startapp firstapp(application name)
+        b)python manage.py runserver(for running the application)
+
+step 5:Database creation in Xampp or localhost
+     
+step 6:settings.py(settings page)
+       1)a)installed app - enter application name(firstapp)
+         
+       b)database connection
+           DATABASES = {
+        'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'startweb',
+        'USER':'root',
+        'PASSWORD':'',
+        'HOST':'localhost',
+        'PORT':'3306',
+    }
+  }
+
+
+step 7:installation of mysqlclient
+        a)pip install mysqlclient
+        b)python manage.py makemigrations
+        c)python manage.py migrate
+        d)python manage.py migrate
+
+step 8: create superuser
+        python manage.py createsuperuser
+        python manage.py runserver
+
+step9 : create sample page
+        url.py in project file
+         from django.contrib import admin
+         from django.urls import path,include
+
+            urlpatterns = [
+              path('admin/', admin.site.urls),
+              path('',include('Home.urls')),
+               ]
+       in views.py apps file
+           from django.shortcuts import render
+           from django.http import HttpResponse
+
+
+             def sample(request):
+                 return HttpResponse("Hello World")
+         create a file urls.py in apps
+          from django.urls import path
+           from . import views
+
+                urlpatterns = [path('demo/', views.sample, name='demo')]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
